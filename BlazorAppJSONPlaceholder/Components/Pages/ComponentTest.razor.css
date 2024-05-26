@@ -1,4 +1,9 @@
-﻿/* Stil dosyanızda */
+﻿body {
+    background: #e0e5ec;
+}
+
+
+/* Stil dosyanızda */
 .dialog-background {
     position: fixed;
     top: 0;

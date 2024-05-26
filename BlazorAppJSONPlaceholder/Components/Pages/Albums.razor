@@ -1,4 +1,7 @@
 ﻿<!-- Albums.razor -->
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
 @page "/albums/{userId:int}"
 @using BlazorAppJSONPlaceholder.Models;
 @inject BlazorAppJSONPlaceholder.Services.AlbumService albumService;  // AlbumService servisini enjekte edin

@@ -1,6 +1,10 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorAppJSONPlaceholder</a>
+        <a class="navbar-brand" href="">MuniComWebApp</a>
     </div>
 </div>
 
@@ -9,6 +13,7 @@
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
         <div class="nav-item px-3">
+
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
@@ -25,6 +30,49 @@
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
             </NavLink>
         </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="users">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> users
+            </NavLink>
+        </div>
+
+
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="componentTest" @onclick="() => ToggleSubMenu(1)">
+                <span class="bi bi-dev-code-square-nav-menu" aria-hidden="true"></span> Developer Panel
+            </NavLink>
+        </div>
+
+        @if (activeMenu == 1)
+        {
+            <div style="margin-left: 20px;">
+
+                <div class="my-menu-item">
+                    <NavLink class="nav-link" href="">
+                        <span class="bi bi-dev-code-square-nav-menu" aria-hidden="true"></span> Menüler
+                    </NavLink>
+                </div>
+
+                <div class="my-menu-item">
+                    <NavLink class="nav-link" href="">
+                        <span class="bi bi-dev-code-square-nav-menu" aria-hidden="true"></span> Roller
+                    </NavLink>
+                </div>
+            </div>
+        }
     </nav>
 </div>
 
+@code {
+    private int activeMenu = 0;
+
+    private void ToggleSubMenu(int menuIndex)
+    {
+        if (activeMenu == menuIndex)
+            activeMenu = 0;
+        else
+            activeMenu = 1;
+
+    }
+}

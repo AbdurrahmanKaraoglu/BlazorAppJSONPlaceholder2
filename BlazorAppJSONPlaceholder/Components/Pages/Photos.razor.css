@@ -157,12 +157,13 @@ button {
     .btn-3 span:hover:after {
         width: 100%;
     }
+
     .btn-3.btn-3:active {
         background-color: black;
         color: white; /* Yazı rengini beyaza çevirin veya istediğiniz rengi kullanın */
     }
 
- 
+
 /* 4 */
 .btn-4 {
     background-color: #4dccc6;
@@ -869,7 +870,3 @@ button {
     .btn-16:active {
         top: 2px;
     }
-
-
-
-

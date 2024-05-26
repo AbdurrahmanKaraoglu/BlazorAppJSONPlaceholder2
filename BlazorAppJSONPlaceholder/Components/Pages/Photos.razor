@@ -1,4 +1,7 @@
 ﻿<!-- Photos.razor -->
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
 @page "/photos/{albumId:int}"
 @using BlazorAppJSONPlaceholder.Models;
 @inject BlazorAppJSONPlaceholder.Services.PhotoService photoService;  // PhotoService servisini enjekte edin

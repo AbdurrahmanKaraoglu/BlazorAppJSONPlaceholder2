@@ -1,0 +1,60 @@
+﻿@page "/componentTest"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+<h3>ComponentTest</h3>
+
+<div class="frame">
+    <button class="custom-btn btn-1" @onclick="OpenDialog">Read More</button>
+</div>
+
+
+@if (isDialogVisible)
+{
+    <!-- Dialog.razor -->
+    @*     <div class="dialog-background">
+        <div class="dialog-content">
+            <h3>Ben Bir Dialogum</h3>
+            <p>Dialog içeriği burada.</p>
+            <button @onclick="CloseDialog">Kapat</button>
+
+        </div>
+    </div> *@
+
+    <div class="custom-dialog-background">
+        <div class="custom-dialog-content">
+            <h3>Dialog Başlığı</h3>
+            <p>Dialog içeriği burada.</p>
+            <div class="button-container">
+                <button class="custom-button yes-button" @onclick="OnYesClick">Evet</button>
+                <button class="custom-button no-button" @onclick="OnNoClick">Hayır</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool isDialogVisible = false;
+
+    private void OpenDialog()
+    {
+        isDialogVisible = true;
+    }
+
+    private void CloseDialog()
+    {
+        isDialogVisible = false;
+    }
+    private void OnYesClick()
+    {
+        Console.WriteLine("Evet düğmesine tıklandı.");
+        CloseDialog();
+    }
+
+    private void OnNoClick()
+    {
+        Console.WriteLine("Hayır düğmesine tıklandı.");
+        CloseDialog();
+    }
+
+}
