@@ -1,0 +1,40 @@
+﻿<!-- Albums.razor -->
+@page "/albums/{userId:int}"
+@using BlazorAppJSONPlaceholder.Models;
+@inject BlazorAppJSONPlaceholder.Services.AlbumService albumService;  // AlbumService servisini enjekte edin
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager; // NavigationManager'ı enjekte edin
+
+<h1>Albüm Listesi</h1>
+@if (albums != null)
+{
+    @foreach (var album in albums)
+    {
+        <div class="album-card">
+            <h3>@album.Title</h3>
+            <p>@album.UserId</p>
+            <!-- Daha fazla album bilgisi ekleyebilirsiniz -->
+            <button @onclick="() => ShowAlbumPhotos(album.Id)">Fotoğraflar</button>
+        </div>
+    }
+}
+else
+{
+    <p>Veriler yükleniyor...</p>
+}
+@code {
+    List<Album> albums;
+
+    [Parameter]
+    public int userId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        albums = await albumService.GetAlbumsAsync(userId);
+    }
+
+    private void ShowAlbumPhotos(int albumId)
+    {
+        // Albümün fotoğraf listesi sayfasına git
+        NavigationManager.NavigateTo($"/photos/{albumId}");
+    }
+}
